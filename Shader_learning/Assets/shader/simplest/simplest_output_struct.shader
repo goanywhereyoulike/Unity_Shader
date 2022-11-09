@@ -5,6 +5,7 @@ Shader "Unlit/simplest"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _Color("Color",Color)=(1,1,1,1)
     }
     SubShader
     {
@@ -16,6 +17,9 @@ Shader "Unlit/simplest"
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+
+            // a variable in CGPROGRAM can be used only it is defined before in Properties  
+            fixed4 _Color;
 
             //a application to vertex
             struct a2v
@@ -51,7 +55,9 @@ Shader "Unlit/simplest"
              
             float4 frag(v2f i):SV_TARGET
             {
-                return fixed4(i.color,1);
+                fixed3 c = i.color; 
+                c*=_Color.rgb;
+                return fixed4(c,1);
             }  
             ENDCG
         }

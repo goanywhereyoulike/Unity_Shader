@@ -26,5 +26,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats: []
-    m_Colors: []
+    m_Colors:
+    - _Color: {r: 0.8026564, g: 0.8867924, b: 0.2710573, a: 1}
   m_BuildTextureStacks: []
